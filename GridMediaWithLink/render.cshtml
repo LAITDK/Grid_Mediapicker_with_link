@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@using %SolutionName%.App.App_Plugins.GridMediaWithLink
+@{
+    string json = Convert.ToString(Model.value);
+    var images = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<GridMediaWithLinkModel>>(json).Where(x => x.Image != null).ToList();
+}
+<div class="image">
+    @foreach (var image in images)
+    {
+        if (!string.IsNullOrWhiteSpace(image.Url))
+        {
+            <a href="@image.Url" title="@image.ImageTitle" @(image.IsExternal ? "target=_blank" : string.Empty)>
+                <img src="@image.Image.Url" alt="@image.Image.AltText" />
+            </a>
+        }
+    }
+</div>

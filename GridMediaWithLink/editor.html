@@ -1,0 +1,82 @@
+﻿
+<div class="gridMediaWithLink" ng-controller="%SolutionName%.GridMediaWithLinkController">
+
+    <div ng-repeat="item in control.value">
+        <div>
+            <div class="image-wrapper">
+                <div ng-if="item.ImageThumb" class="image">
+                    <img ng-click="openMediaPicker(item)" src="{{item.ImageThumb}}" />
+                    <i class="icon icon-delete red"></i>
+                    <a class="picked-image" ng-click="removePicture(item)" prevent-default>
+                        Remove image
+                    </a>
+                    <div class="title">
+                        <div>
+                            <strong>Link title</strong>
+                        </div>
+                        <input type="text" ng-model="item.ImageTitle" /><br />
+                    </div>
+                </div>
+                <div ng-if="!item.ImageThumb">
+                    <!--<i class="icon icon-add blue"></i>-->
+                    <div class="umb-editor-placeholder">
+                        <a ng-click="openMediaPicker(item)" prevent-default>
+                            <i class="icon icon-picture"></i>
+                            <div ng-id="!control.$inserted" class="help-text">
+                                <localize key="grid_clickToInsertImage" class="ng-isolate-scope ng-scope">Click to insert image</localize>
+                            </div>
+                            <!--Choose image &raquo;-->
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-wrapper">
+                <div class="content-picker">
+                    <div ng-show="item.UrlMode == null">
+                        <a ng-click="internalUrl(item)" prevent-default>Link internt &raquo;</a>
+                    </div>
+                    <div ng-show="item.UrlMode == null">
+                        <a ng-click="externalUrl(item)" prevent-default>Link eksternt &raquo;</a>
+                    </div>
+                    <div ng-show="item.UrlMode == 'internal'">
+                        <div class="main">
+                            <div>
+                                <strong>Internt link</strong>
+                            </div>
+                            <div>
+                                <a class="picker" ng-click="openContentPicker(item, item.internalContentId)">
+                                    <span ng-show="item.internalContentId != null">
+                                        Valgte side: {{item.internalContentName}}
+                                    </span>
+                                    <span ng-show="item.internalContentId == null">
+                                        Vælg en side &raquo;
+                                    </span>
+                                </a>
+                                <span ng-show="item.internalContentId != null" ng-click="clearLink(item)">
+                                    <i class="icon icon-delete red"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="switch">
+                            <a ng-click="externalUrl(item)" prevent-default>Klik her hvis du ønsker at linke <strong>eksternt</strong> &raquo;</a>
+                        </div>
+                    </div>
+                    <div ng-show="item.UrlMode == 'external'">
+                        <div class="main">
+                            <div>
+                                <strong>Eksternt link</strong>
+                            </div>
+                            <input type="text" ng-model="item.ExternalUrl" /><br />
+                        </div>
+                        <div class="switch">
+                            <a ng-click="internalUrl(item)" prevent-default>Klik her hvis du ønsker at linke <strong>internt</strong> &raquo;</a>
+                        </div>
+                    </div>
+                </div>
+                <!--<a class="btn delete-box" ng-click="removeItem($index)">Delete slide</a>-->
+            </div>
+        </div>
+    </div>
+    <!--<a class="btn btn-success" ng-click="addItem()">Add slide</a>-->
+    <!--{{model.value}}-->
+</div>

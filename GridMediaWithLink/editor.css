@@ -1,0 +1,11 @@
+﻿.gridMediaWithLink .image-wrapper {
+  padding: 10px; }
+
+.gridMediaWithLink .link-wrapper {
+  padding: 10px; }
+  .gridMediaWithLink .link-wrapper .switch {
+    padding: 10px 0 0; }
+
+.gridMediaWithLink a:hover {
+  cursor: pointer; }
+

@@ -1,0 +1,15 @@
+﻿{
+  "gridEditors": [
+    {
+      "name": "Image with link",
+      "alias": "gridMediaWithLink",
+      "view": "/App_Plugins/GridMediaWithLink/editor.html",
+      "icon": "icon-picture",
+      "render": "/App_Plugins/GridMediaWithLink/render.cshtml",
+      "valueType": "JSON"
+    }
+  ],
+  "javascript": [
+    "/App_Plugins/GridMediaWithLink/editor.controller.js"
+  ]
+}
